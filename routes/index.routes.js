@@ -52,15 +52,32 @@ router.get("/:user/create", isLoggedIn, isSameUser, (req, res)=>{
   else{
       res.render("users/select-song", info);
     }
-  })
-  
+  });
+
+router.post("/:user/creating", async (req, res) =>{
+  const songDetails = req.body;
+  //const songDetails = await JSON.parse(req.body.selectedSong)
+  console.log(songDetails)
+  const thePost = {
+    title: songDetails.name,
+    artist: songDetails.artist,
+    previewURI: songDetails.preview,
+    owner: req.session.currentUser._id,
+    postText: songDetails.postText
+  }
+  console.log(thePost);
+  const { _id } = await Post.create(thePost);
+  await User.findByIdAndUpdate(req.session.currentUser._id, {$push: {posts: _id}});
+  console.log("POST Created in the DB");
+  res.send(thePost);
+});
+
 router.post("/:user/create", async (req, res) =>{
   // console.log(req.body.selectedSong)
   // res.send(req.body.selectedSong)
   const songDetails = await JSON.parse(req.body.selectedSong)
   console.log(songDetails)
   res.render("users/create-post", songDetails)
-  
   // res.redirect();
 
 

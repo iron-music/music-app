@@ -5,7 +5,7 @@ const postSchema = new Schema(
     {
         title: String,
         artist: String,
-        songSpotiURI: String,
+        // songSpotiURI: String,
         previewURI: String,
         imageURL: String,
         owner: {
@@ -22,4 +22,4 @@ const postSchema = new Schema(
 
 const Post = model("Post", postSchema);
 
-module.esports = Post;
+module.exports = Post;
