@@ -6,6 +6,10 @@ const isLoggedIn = require('../middleware/isLoggedIn');
 
 const router = express.Router();
 
+// Require the User model in order to interact with the database
+const User = require("../models/User.model");
+const Post = require("../models/Post.model");
+
 /* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");

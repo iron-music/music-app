@@ -6,6 +6,8 @@ const postSchema = new Schema(
         title: String,
         artist: String,
         songSpotiURI: String,
+        previewURI: String,
+        imageURL: String,
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
