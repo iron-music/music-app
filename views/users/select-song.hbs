@@ -1,0 +1,20 @@
+<form action="/{{userName}}/create" method="GET">
+    <label>SEARCH YOUR SONG {{userName}}
+        <input name="song" type="text"/>
+    </label>
+    <button type="submit">search!</button>
+</form>
+{{#if cleanSongsArr}}
+<h1>SONGS LIST</h1>
+<form action="/{{userName}}/create" method="POST">
+<select name="selectedSong">
+    {{#each cleanSongsArr}}
+    
+        <option value="{{this.stringified}}">{{this.name}}</option> 
+       
+    {{/each }}
+    </select>
+    
+    <button type="submit">select</button>
+</form>
+{{/if}}
