@@ -4,9 +4,17 @@
     </label>
     <button type="submit">search!</button>
 </form>
-<h1>SONGS LIST</h1>
 {{#if cleanSongsArr}}
+<h1>SONGS LIST</h1>
+<form action="/{{userName}}/create" method="POST">
+<select name="selectedSong">
     {{#each cleanSongsArr}}
-        {{this.name}} <br>
+    
+        <option value="{{this.stringified}}">{{this.name}}</option> 
+       
     {{/each }}
+    </select>
+    
+    <button type="submit">select</button>
+</form>
 {{/if}}
