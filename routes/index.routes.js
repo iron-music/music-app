@@ -1,5 +1,7 @@
 const express = require('express');
 const spotifyApi = require("../api/api");
+const isSameUser = require('../middleware/isSameUser');
+const isLoggedIn = require('../middleware/isLoggedIn');
 
 
 const router = express.Router();
@@ -9,13 +11,13 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.get("/:user", async( req, res)=>{
+router.get("/:user",  isLoggedIn, isSameUser, async( req, res)=>{
 const userName = req.params.user;
 res.render("users/profile",{userName});
 });
 
 
-router.get("/:user/create",  (req, res)=>{
+router.get("/:user/create", isLoggedIn, isSameUser, (req, res)=>{
   const userName = req.params.user;
   const song = req.query.song;
   const info = {
