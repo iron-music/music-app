@@ -20,7 +20,6 @@ router.get("/:user/create",  (req, res)=>{
   const song = req.query.song;
   const info = {
     userName:userName
-   
   }
   if (song) {
 
@@ -41,20 +40,25 @@ router.get("/:user/create",  (req, res)=>{
             stringified: JSON.stringify(obj)}
       })
       info.cleanSongsArr = cleanSongsArr;
-      res.render("users/create-post", info);
+      res.render("users/select-song", info);
     })
   }
   else{
-      res.render("users/create-post", info);
+      res.render("users/select-song", info);
     }
   })
   
-router.post("/:user/create", (req, res) =>{
-  console.log(req.body.selectedSong)
-  res.send(req.body.selectedSong)
-
+router.post("/:user/create", async (req, res) =>{
+  // console.log(req.body.selectedSong)
+  // res.send(req.body.selectedSong)
+  const songDetails = await JSON.parse(req.body.selectedSong)
+  console.log(songDetails)
+  res.render("users/create-post", songDetails)
+  
+  // res.redirect();
 
 
 })
+
 
 module.exports = router;

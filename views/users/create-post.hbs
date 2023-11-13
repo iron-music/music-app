@@ -1,20 +1,17 @@
-<form action="/{{userName}}/create" method="GET">
-    <label>SEARCH YOUR SONG {{userName}}
-        <input name="song" type="text"/>
-    </label>
-    <button type="submit">search!</button>
-</form>
-{{#if cleanSongsArr}}
-<h1>SONGS LIST</h1>
-<form action="/{{userName}}/create" method="POST">
-<select name="selectedSong">
-    {{#each cleanSongsArr}}
-    
-        <option value="{{this.stringified}}">{{this.name}}</option> 
-       
-    {{/each }}
-    </select>
-    
-    <button type="submit">select</button>
-</form>
-{{/if}}
+<div>
+    <h2>{{name}}</h2>
+    <p>{{artist}}</p>
+    <audio controls src={{preview}}>
+</div>
+<div>
+    <form action="/:user/create" method="POST">
+        <label for="postText">Post Text</label>
+            <textarea type="text" name="postText" placeholder="Description..." rows="4" cols="30"></textarea>
+        <button type="submit">SAVE</button>
+        <div>
+        <input type="text" name="name" value="{{name}}"  hidden readonly>
+        <input type="text" name="artist" value="{{previe}}"  hidden readonly>
+        <input type="text" name="preview" value="{{preview}}"  hidden readonly>
+        </div>
+    </form>
+</div>
