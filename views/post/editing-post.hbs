@@ -1,0 +1,13 @@
+    <div>
+        <h2>{{title}}</h2>
+        <p>{{artist}}</p>
+        <audio controls src={{previewURI}}>
+    </div>    
+    <div>
+        <form action="/:user/edit" method="POST">
+            <label for="postText">Post Text</label>
+                <textarea type="text" name="postText" value={{postText}}></textarea>
+            <button type="submit">SAVE EDIT</button>
+        </form>
+    </div>
+    
