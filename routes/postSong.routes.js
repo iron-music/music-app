@@ -26,13 +26,15 @@ router.post("/:post/edit", async (req, res) =>{
 router.get("/:post/deleting", async (req, res) =>{
     const postId = req.params.post;
     postInfo = await Post.find({_id : postId}).populate("owner");
-    console.log(postInfo)
     const objectPost = postInfo[0]
     res.render("post/deleting-confirmation-post",objectPost);
 })
 
 router.get("/:post/deleted", async (req, res) =>{
     const idPost = req.params.post;
+    const postPopulated = await Post.findById(idPost).populate("owner");
+    const ownerId = postPopulated.owner._id;
+    await User.updateOne({_id: ownerId},{$pull: {posts: idPost}});
     await Post.deleteOne({_id : idPost})
     res.redirect(`/${req.session.currentUser.username}`);
 })
