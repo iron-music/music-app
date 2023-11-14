@@ -4,9 +4,9 @@
         <audio controls src={{previewURI}}>
     </div>    
     <div>
-        <form action="/:user/edit" method="POST">
+        <form action="/{{_id}}/edit" method="POST">
             <label for="postText">Post Text</label>
-                <textarea type="text" name="postText" value={{postText}}></textarea>
+                <textarea type="text" name="postText" >{{postText}}</textarea>
             <button type="submit">SAVE EDIT</button>
         </form>
     </div>
