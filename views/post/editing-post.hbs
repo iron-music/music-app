@@ -1,13 +1,18 @@
-    <div>
-        <h2>{{title}}</h2>
-        <p>{{artist}}</p>
-        <audio controls src={{previewURI}}>
-    </div>    
-    <div>
-        <form action="/{{_id}}/edit" method="POST">
-            <label for="postText">Post Text</label>
-                <textarea type="text" name="postText" >{{postText}}</textarea>
-            <button type="submit">SAVE EDIT</button>
-        </form>
+    <div class="container-single-post">
+        <div class="single-post">
+            <div class="spoti-info-single-post" >
+                <h2>{{title}}</h2>
+                <p>{{artist}}</p>
+                <img src="{{imageURL}}" alt="">
+                <audio controls src={{previewURI}}>
+            </div>    
+            <div class="form-single-post">
+                <form action="/{{_id}}/edit" method="POST">
+                    <label for="postText">{{userName}}Post Text</label>
+                        <textarea class="text-area-custom" type="text" name="postText" >{{postText}}</textarea>
+                    <button type="submit">SAVE EDIT</button>
+                </form>
+            </div>
+        </div>
     </div>
     

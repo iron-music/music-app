@@ -19,7 +19,8 @@ router.get("/:post/edit", async (req, res) =>{
 router.post("/:post/edit", async (req, res) =>{
     // console.log(req.body.postText)
     const newText = req.body.postText
-    await Post.findByIdAndUpdate(req.params.post, {postText: newText});
+    const postId = req.params.post
+    await Post.findByIdAndUpdate(postId, {postText: newText});
     res.redirect(`/${req.session.currentUser.username}`);
 })
 

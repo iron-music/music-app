@@ -1,0 +1,41 @@
+/* CRUD post*/
+.container-single-post{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.single-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 500px;
+    background-color: #282828;
+    color: rgb(255, 255, 255);
+    height: 500px;
+    border-radius: 20px;
+}
+
+.form-single-post{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spoti-info-single-post{
+    /* background-color: rgb(183, 115, 115); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-area-custom{
+    width: 100%;
+    resize:none;
+}
