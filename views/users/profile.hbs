@@ -21,13 +21,18 @@
 
         <div>
             <span class="star-rating">
-                <form action="/{{this._id}}/rate" method="POST">
-                    <label for="rate-1" ><i class="fa fa-star"></i></label>
+                <form action="/rate/{{this._id}}" method="POST">
+                    
+                    <div><label for="rate-1" ><i class="fa fa-star"></i></label>
                     <input type="radio" name="rating"  value="1">
                     <label for="rate-2" ><i class="fa fa-star "></i></label>
                     <input type="radio" name="rating"  value="2">
                     <label for="rate-3" ><i class="fa fa-star"></i></label>
                     <input type="radio" name="rating"  value="3">
+                    </div>
+                    <div>
+                        <button type="submit">VOTE!</button>
+                    </div>
                 </form>
         </div>
 
