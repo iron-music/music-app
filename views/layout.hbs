@@ -12,7 +12,16 @@
     <nav>
       <ul class="navbar">
         <li class="to-left">
-          <p><a href="/"> IronMusic </a></p>
+          <p><a href="/">
+          {{#if userName}}
+            {{userName}}
+          {{else}}
+            No user
+          {{/if}}
+          </a></p>
+        </li>
+        <li class="to-left">
+          <p><a href="/" style=""> edit user</a></p>
         </li>
 		    <li class="to-right">
           <a href="/logout">Log out</a>
