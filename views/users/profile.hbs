@@ -5,16 +5,14 @@
             <div></div>
             <div>
                 <a href="/{{this.owner._id}}/edit"><button>edit</button></a>
-                <a href="/{{this._id}}/delete"><button>delete</button></a>
+                <a href="/{{this._id}}/deleting"><button>delete</button></a>
             </div>
         </div>
         <div>
             <h3>{{this.title}}</h3>
             <h4>{{this.artist}}</h4>
-
         </div>
         <audio controls load src={{this.previewURI}}></audio>
-
         <img src={{this.imageURL}}>
         <div class="post-content">
             <span class="post-username">{{this.owner.username}}</span>

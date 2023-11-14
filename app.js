@@ -30,7 +30,7 @@ app.use("/", authRoutes);
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
-const postRoutes = require("./routes/post.routes");
+const postRoutes = require("./routes/postSong.routes");
 app.use("/", postRoutes);
 
 

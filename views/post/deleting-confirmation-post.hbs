@@ -1,0 +1,17 @@
+    <div>
+        <h2>Are you sure you want to delete it?</h2>
+        <a href="/{{_id}}/deleted"><button>Yes</button></a>
+        <a href="/{{owner.username}}"><button>No</button></a>
+    </div> 
+    <div>
+        <h2>{{title}}</h2>
+        <p>{{artist}}</p>
+        <audio controls src={{previewURI}}>
+    </div> 
+    <div>
+        <form action="/{{_id}}/edit" method="POST">
+            <label for="postText">Post Text</label>
+                <textarea type="text" name="postText" >{{postText}}</textarea>
+            <button type="submit">SAVE EDIT</button>
+        </form>
+    </div>
