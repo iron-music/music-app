@@ -4,6 +4,7 @@
         <div class="button-container">
             <div></div>
             <div>
+            {{#if this.isOwner}}
                 <a href="/{{this._id}}/edit"><button>edit</button></a>
                 <a href="/{{this._id}}/deleting"><button>delete</button></a>
             {{else }}
