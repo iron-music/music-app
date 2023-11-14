@@ -17,7 +17,14 @@ router.get("/", (req, res, next) => {
 
 router.get("/:user",  isLoggedIn, isSameUser, async( req, res)=>{
 const userName = req.params.user;
-res.render("users/profile",{userName});
+
+const posts  = await Post.find();
+
+
+
+
+
+res.render("users/profile",{userName, posts});
 });
 
 
@@ -40,8 +47,10 @@ router.get("/:user/create", isLoggedIn, isSameUser, (req, res)=>{
             name: song.name,
             artist: song.artists[0].name,
             id: song.id,
-            preview: song.preview_url
+            preview: song.preview_url,
+            imageURL:song.album.images[1].url
           }
+          
           return {... obj,
             stringified: JSON.stringify(obj)}
       })
@@ -54,6 +63,17 @@ router.get("/:user/create", isLoggedIn, isSameUser, (req, res)=>{
     }
   });
 
+  router.post("/:user/create", async (req, res) =>{
+    // console.log(req.body.selectedSong)
+    // res.send(req.body.selectedSong)
+    const songDetails = await JSON.parse(req.body.selectedSong)
+    console.log(songDetails)
+    res.render("users/create-post", songDetails)
+    
+  
+  
+  })
+
 router.post("/:user/creating", async (req, res) =>{
   const songDetails = req.body;
   //const songDetails = await JSON.parse(req.body.selectedSong)
@@ -63,25 +83,17 @@ router.post("/:user/creating", async (req, res) =>{
     artist: songDetails.artist,
     previewURI: songDetails.preview,
     owner: req.session.currentUser._id,
-    postText: songDetails.postText
+    postText: songDetails.postText,
+    imageURL: songDetails.imageURL
   }
   console.log(thePost);
   const { _id } = await Post.create(thePost);
   await User.findByIdAndUpdate(req.session.currentUser._id, {$push: {posts: _id}});
   console.log("POST Created in the DB");
-  res.send(thePost);
+  res.redirect(`/${req.session.currentUser.username}`);
 });
 
-router.post("/:user/create", async (req, res) =>{
-  // console.log(req.body.selectedSong)
-  // res.send(req.body.selectedSong)
-  const songDetails = await JSON.parse(req.body.selectedSong)
-  console.log(songDetails)
-  res.render("users/create-post", songDetails)
-  // res.redirect();
 
-
-})
 
 
 module.exports = router;
