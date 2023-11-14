@@ -16,15 +16,11 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/:user",  isLoggedIn, isSameUser, async( req, res)=>{
-const userName = req.params.user;
 
-const posts  = await Post.find();
-
-
-
-
-
-res.render("users/profile",{userName, posts});
+const posts  = await Post.find().populate("owner");
+console.log(posts
+  )
+res.render("users/profile",{posts});
 });
 
 

@@ -7,10 +7,10 @@
 </aside>
 <main>
     {{#each posts}}
-    <a href="/{{this._id}}/edit"><button>edit</button></a>
+    <a href="/{{this.owner._id}}/edit"><button>edit</button></a>
     <a href="/{{this._id}}/delete"><button>delete</button></a>
-<p>{{this.owner}}</p>
-<p>{{this.title}}</p>
+<p>{{this.owner.username}}</p>
+<h3>{{this.title}}</h3>
 <p>{{this.artist}}</p>
 <p>{{this.previewURI}}</p>
 <p>{{this.postText}}</p>
