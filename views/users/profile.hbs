@@ -7,7 +7,7 @@
 </aside>
 <main>
     {{#each posts}}
-    <a href="/{{this.owner._id}}/edit"><button>edit</button></a>
+    <a href="/{{this._id}}/edit"><button>edit</button></a>
     <a href="/{{this._id}}/delete"><button>delete</button></a>
 <p>{{this.owner.username}}</p>
 <h3>{{this.title}}</h3>
