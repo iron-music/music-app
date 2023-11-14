@@ -23,6 +23,9 @@ const projectName = "ironmusic";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+const setResLocals = require("./middleware/setResLocals");
+app.use(setResLocals);
+
 // 👇 Start handling routes here
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
