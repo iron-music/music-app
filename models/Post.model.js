@@ -13,7 +13,10 @@ const postSchema = new Schema(
             ref: "User"
         },
         postText: String,
-        score: Number
+        score: {
+            type: Number,
+            default: 0
+        } 
     },
     {
         // this second object adds extra properties: `createdAt` and `updatedAt`

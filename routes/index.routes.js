@@ -15,62 +15,83 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.get("/:user",  isLoggedIn, isSameUser, async( req, res)=>{
+router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
 
-const posts  = await Post.find().populate("owner");
-console.log(posts
-  )
-res.render("users/profile",{posts});
+  const posts = await Post.find().populate("owner");
+
+
+  const finalPosts = posts.map((e) => {
+
+    if (e.owner.username === req.session.currentUser.username) {
+      console.log(e)
+      console.log(req.session.currentUser.username)
+
+      let e2 = JSON.stringify(e);
+      e2 = JSON.parse(e2);
+      e2.isOwner = true;
+      console.log("e2: ", e2);
+      return e2;
+    }
+    return e;
+
+
+
+  })
+
+  // res.send(finalPosts)
+  res.render("users/profile", { finalPosts });
 });
 
 
-router.get("/:user/create", isLoggedIn, isSameUser, (req, res)=>{
+router.get("/:user/create", isLoggedIn, isSameUser, (req, res) => {
   const userName = req.params.user;
   const song = req.query.song;
   const info = {
-    userName:userName
+    userName: userName
   }
   if (song) {
 
     spotifyApi.searchTracks(song)
-      .then((result)=>{
-      
+      .then((result) => {
+
         return result.body.tracks.items
-    })
-    .then((songsArray)=>{
-      const cleanSongsArr = songsArray.map((song)=>{
+      })
+      .then((songsArray) => {
+        const cleanSongsArr = songsArray.map((song) => {
           const obj = {
             name: song.name,
             artist: song.artists[0].name,
             id: song.id,
             preview: song.preview_url,
-            imageURL:song.album.images[1].url
+            imageURL: song.album.images[1].url
           }
-          
-          return {... obj,
-            stringified: JSON.stringify(obj)}
+
+          return {
+            ...obj,
+            stringified: JSON.stringify(obj)
+          }
+        })
+        info.cleanSongsArr = cleanSongsArr;
+        res.render("users/select-song", info);
       })
-      info.cleanSongsArr = cleanSongsArr;
-      res.render("users/select-song", info);
-    })
   }
-  else{
-      res.render("users/select-song", info);
-    }
-  });
+  else {
+    res.render("users/select-song", info);
+  }
+});
 
-  router.post("/:user/create", async (req, res) =>{
-    // console.log(req.body.selectedSong)
-    // res.send(req.body.selectedSong)
-    const songDetails = await JSON.parse(req.body.selectedSong)
-    console.log(songDetails)
-    res.render("users/create-post", songDetails)
-    
-  
-  
-  })
+router.post("/:user/create", async (req, res) => {
+  // console.log(req.body.selectedSong)
+  // res.send(req.body.selectedSong)
+  const songDetails = await JSON.parse(req.body.selectedSong)
+  console.log(songDetails)
+  res.render("users/create-post", songDetails)
 
-router.post("/:user/creating", async (req, res) =>{
+
+
+})
+
+router.post("/:user/creating", async (req, res) => {
   const songDetails = req.body;
   //const songDetails = await JSON.parse(req.body.selectedSong)
   console.log(songDetails)
@@ -84,7 +105,7 @@ router.post("/:user/creating", async (req, res) =>{
   }
   console.log(thePost);
   const { _id } = await Post.create(thePost);
-  await User.findByIdAndUpdate(req.session.currentUser._id, {$push: {posts: _id}});
+  await User.findByIdAndUpdate(req.session.currentUser._id, { $push: { posts: _id } });
   console.log("POST Created in the DB");
   res.redirect(`/${req.session.currentUser.username}`);
 });

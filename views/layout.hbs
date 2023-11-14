@@ -15,17 +15,28 @@
     <nav>
       <ul class="navbar">
         <li class="to-left">
-          <p><a href="/"> IronMusic </a></p>
+          {{#if userName}}
+            <a id="header-username" href="/{{userName}}">{{userName}}</a>
+          {{/if}}
         </li>
+        {{#if userName}}
+        <li class="to-left">
+          <a href="/{{userName}}/edit" style="">&nbsp;edit user</a>
+        </li>
+        {{/if}}
+        {{#if userName}}
 		    <li class="to-right">
           <a href="/logout">Log out</a>
         </li>
+        {{/if}}
+        {{#unless userName}}
         <li class="to-right">
           <a href="/signup">Sign up</a>
         </li>
         <li class="to-right">
           <a href="/login">Log in</a>
         </li>
+        {{/unless}}
       </ul>
     </nav>
 

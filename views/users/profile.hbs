@@ -1,11 +1,14 @@
 <main class="profile-container">
-    {{#each posts}}
+    {{#each finalPosts}}
     <div class="card">
         <div class="button-container">
             <div></div>
             <div>
                 <a href="/{{this._id}}/edit"><button>edit</button></a>
                 <a href="/{{this._id}}/deleting"><button>delete</button></a>
+            {{else }}
+                &nbsp;
+            {{/if}} 
             </div>
         </div>
         <div>
@@ -19,16 +22,23 @@
             <p class="postText">{{this.postText}}</p>
         </div>
 
-        <div>
-            <span class="star-rating">
+        <div class="star-rating">
                 <form action="/{{this._id}}/rate" method="POST">
-                    <label for="rate-1" ><i class="fa fa-star"></i></label>
-                    <input type="radio" name="rating"  value="1">
-                    <label for="rate-2" ><i class="fa fa-star "></i></label>
-                    <input type="radio" name="rating"  value="2">
-                    <label for="rate-3" ><i class="fa fa-star"></i></label>
-                    <input type="radio" name="rating"  value="3">
+                    
+                    <div>
+                        <label for="1" ><i class="fa fa-star"></i></label>  
+                        <input type="radio" id="1" name="rating"  value="1"></input>
+                        <label for="2" ><i class="fa fa-star "></i></label>
+                        <input type="radio" id="2" name="rating"  value="2" ></input>
+                        <label for="2" ><i class="fa fa-star"></i></label>
+                        <input type="radio" id="3" name="rating"  value="3"></input>
+                    </div>
+                     
+                    <div>
+                        <button type="submit">VOTE!</button>
+                    </div>
                 </form>
+           
         </div>
 
 

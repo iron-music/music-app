@@ -27,15 +27,31 @@ router.post("/:post/edit", async (req, res) =>{
 router.get("/:post/deleting", async (req, res) =>{
     const postId = req.params.post;
     postInfo = await Post.find({_id : postId}).populate("owner");
-    console.log(postInfo)
     const objectPost = postInfo[0]
     res.render("post/deleting-confirmation-post",objectPost);
 })
 
 router.get("/:post/deleted", async (req, res) =>{
     const idPost = req.params.post;
+    const postPopulated = await Post.findById(idPost).populate("owner");
+    const ownerId = postPopulated.owner._id;
+    await User.updateOne({_id: ownerId},{$pull: {posts: idPost}});
     await Post.deleteOne({_id : idPost})
     res.redirect(`/${req.session.currentUser.username}`);
+})
+
+//receiving the rating score and updating the Post score field
+router.post("/:post/rate", async (req, res) => {
+    const postId = req.params.post;
+    const rating = parseInt(req.body.rating);
+    const post = await Post.findById(postId);
+    const postScore = parseInt(post.score);
+    
+    const updatedScore = postScore + rating ;
+console.log(post.score)
+    await Post.findByIdAndUpdate(postId,{score: updatedScore})
+    
+    res.send({ updatedScore})
 })
 
 module.exports = router;
