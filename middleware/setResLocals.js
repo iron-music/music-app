@@ -1,5 +1,5 @@
 module.exports = (req, res, next) => {
-    console.log("MIDDLEWARE. currentUser: ", req);
+    //console.log("MIDDLEWARE. currentUser: ", req);
     if (req && req.session && req.session.currentUser) {
         res.locals.userName = req.session.currentUser.username;
         //console.log("session", req.session.currentUser.username);
