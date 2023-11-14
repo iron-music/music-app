@@ -92,10 +92,29 @@ audio {
   width: 250px;
   height: 28px;
   margin: 8px;
-}
-.post-content{
+}/*star rating start*/
 
+.star-rating {
+	white-space: nowrap;
 }
+.star-rating [type="radio"] {
+	appearance: none;
+}
+.star-rating i {
+	font-size: 2em;
+	transition: 0.3s;
+}
+.star-rating i:hover {
+  color: #faec1b;
+}
+/*this is not working but we want to do something similar
+.star-rating label:has(~ :checked) i {
+  color: #faec1b;
+	text-shadow: 0 0 2px #ffffff, 0 0 10px #ffee58;
+}
+*/
+
+/*star rating end */
 .postText{
   background-color: blueviolet;
 }

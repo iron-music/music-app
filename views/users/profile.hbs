@@ -11,7 +11,7 @@
         <div>
             <h3>{{this.title}}</h3>
             <h4>{{this.artist}}</h4>
-     
+
         </div>
         <audio controls load src={{this.previewURI}}></audio>
 
@@ -21,7 +21,18 @@
             <p class="postText">{{this.postText}}</p>
         </div>
 
-    
+        <div>
+            <span class="star-rating">
+                <form action="/{{this._id}}/rate" method="POST">
+                    <label for="rate-1" ><i class="fa fa-star"></i></label>
+                    <input type="radio" name="rating"  value="1">
+                    <label for="rate-2" ><i class="fa fa-star "></i></label>
+                    <input type="radio" name="rating"  value="2">
+                    <label for="rate-3" ><i class="fa fa-star"></i></label>
+                    <input type="radio" name="rating"  value="3">
+                </form>
+        </div>
+
 
 
     </div>
