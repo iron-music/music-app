@@ -124,3 +124,21 @@ audio {
 /*----------- PROFILE END */
 
 
+/*----------- EDIT USER START */
+
+.edituser-container {
+  align-items: center;
+}
+
+.edituser-image {
+  height: 300px;
+  width: auto;
+}
+
+.edituser-username {
+    font-weight: bold;
+    font-size: 1.7em;
+    padding: 1em;
+}
+
+/*----------- EDIT USER END */
