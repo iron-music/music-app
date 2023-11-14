@@ -14,19 +14,13 @@
     <nav>
       <ul class="navbar">
         <li class="to-left">
-          <p>
-            {{#if userName}}
-            <a href="/">
-            {{userName}}
-          {{else}}
-            No user
-          </a>
-          {{/if}}</p>
+          {{#if userName}}
+            <a id="header-username" href="/{{userName}}">{{userName}}</a>
+          {{/if}}
         </li>
-         
-         {{#if userName}}
+        {{#if userName}}
         <li class="to-left">
-          <p><a href="/{{userName}}/edit" style="">&nbsp;edit user</a></p>
+          <a href="/{{userName}}/edit" style="">&nbsp;edit user</a>
         </li>
         {{/if}}
         {{#if userName}}
