@@ -37,4 +37,19 @@ router.get("/:post/deleted", async (req, res) =>{
     res.redirect(`/${req.session.currentUser.username}`);
 })
 
+//receiving the rating score and updating the Post score field
+router.post("/:post/rate", async (req, res) => {
+    const postId = req.params.post;
+    const rating = req.body.rating;
+    const post = await Post.findById(postId);
+    const postScore = post.score;
+    
+    const updatedScore = postScore + 0 ;
+
+    //Post.findByIdAndUpdate(postId{score})
+    console.log({rating})
+    console.log(req.body.rating)
+    res.send({postScore})
+})
+
 module.exports = router;
