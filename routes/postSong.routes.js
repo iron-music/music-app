@@ -23,9 +23,15 @@ router.post("/:post/edit", async (req, res) =>{
     res.redirect(`/${req.session.currentUser.username}`);
 })
 
-router.get("/:post/delete", async (req, res) =>{
-    
-    
+router.get("/:post/deleting", async (req, res) =>{
+    const postId = req.params.post;
+    postInfo = await Post.find({_id : postId}).populate("owner");
+    console.log(postInfo)
+    const objectPost = postInfo[0]
+    res.render("post/deleting-confirmation-post",objectPost);
+})
+
+router.get("/:post/deleted", async (req, res) =>{
     const idPost = req.params.post;
     await Post.deleteOne({_id : idPost})
     res.redirect(`/${req.session.currentUser.username}`);
