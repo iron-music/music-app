@@ -1,19 +1,29 @@
-<h1>Hello {{userName}} </h1>
-<aside>
-    <img class="profile-img" src="">
-    <a href="/{{userName}}/create">
-        <button>Post the dayly song</button>
-    </a>
-</aside>
-<main>
+<main class="profile-container">
     {{#each posts}}
-    <a href="/{{this._id}}/edit"><button>edit</button></a>
-    <a href="/{{this._id}}/delete"><button>delete</button></a>
-<p>{{this.owner.username}}</p>
-<h3>{{this.title}}</h3>
-<p>{{this.artist}}</p>
-<p>{{this.previewURI}}</p>
-<p>{{this.postText}}</p>
-<img src={{this.imageURL}}>
-{{/each}}
+    <div class="card">
+        <div class="button-container">
+            <div></div>
+            <div>
+                <a href="/{{this.owner._id}}/edit"><button>edit</button></a>
+                <a href="/{{this._id}}/delete"><button>delete</button></a>
+            </div>
+        </div>
+        <div>
+            <h3>{{this.title}}</h3>
+            <h4>{{this.artist}}</h4>
+     
+        </div>
+        <audio controls load src={{this.previewURI}}></audio>
+
+        <img src={{this.imageURL}}>
+        <div class="post-content">
+            <span class="post-username">{{this.owner.username}}</span>
+            <p class="postText">{{this.postText}}</p>
+        </div>
+
+    
+
+
+    </div>
+    {{/each}}
 </main>
