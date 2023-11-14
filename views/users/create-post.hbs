@@ -6,12 +6,14 @@
 <div>
     <form action="/:user/creating" method="POST">
         <label for="postText">Post Text</label>
-            <textarea type="text" name="postText" placeholder="Description..." rows="4" cols="30"></textarea>
+            <textarea type="text" name="postText" placeholder="Description..." maxlength="200" rows="4" cols="30"></textarea>
         <button type="submit">SAVE</button>
         <div>
         <input type="text" name="name" value="{{name}}"  hidden readonly>
         <input type="text" name="artist" value="{{artist}}"  hidden readonly>
         <input type="text" name="preview" value="{{preview}}"  hidden readonly>
+        <input type="text" name="imageURL" value="{{imageURL}}"  hidden readonly>
+
         </div>
     </form>
 </div>

@@ -12,7 +12,11 @@ const postSchema = new Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        postText: String
+        postText: String,
+        score: {
+            type: Number,
+            default: 0
+        } 
     },
     {
         // this second object adds extra properties: `createdAt` and `updatedAt`

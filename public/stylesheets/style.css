@@ -1,5 +1,11 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
+
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -43,4 +49,74 @@ h1 {
   font-weight: bold;
   font-size: 1.7em;
 }
+
 /* ---------- NAVBAR END */
+
+/*----------- PROFILE START */
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 90%;
+  width: 100%;
+  background-color: #000;
+  justify-content: space-around;
+}
+
+.card {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  background-color: aqua;
+  width: 320px;
+  height: 500px ;
+  margin-top: 8px;
+  border-radius: 15px;
+  align-items: center;
+}
+.card img{
+  border: 2px solid red;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+/* audio controls*/
+audio {
+  border-radius: 30px;
+  border: 2px solid red;
+  width: 250px;
+  height: 28px;
+  margin: 8px;
+}/*star rating start*/
+
+.star-rating {
+	white-space: nowrap;
+}
+.star-rating [type="radio"] {
+	appearance: none;
+}
+.star-rating i {
+	font-size: 2em;
+	transition: 0.3s;
+}
+.star-rating i:hover {
+  color: #faec1b;
+}
+/*this is not working but we want to do something similar
+.star-rating label:has(~ :checked) i {
+  color: #faec1b;
+	text-shadow: 0 0 2px #ffffff, 0 0 10px #ffee58;
+}
+*/
+
+/*star rating end */
+.postText{
+  background-color: blueviolet;
+}
+
+/*----------- PROFILE END */

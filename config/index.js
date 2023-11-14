@@ -57,8 +57,10 @@ module.exports = (app) => {
       secret: process.env.SESSION_SECRET || "super hyper secret key",
       resave: false,
       saveUninitialized: false,
+      maxAge: 60000, // 60 * 1000 ms === 1 min //havegador
       store: MongoStore.create({
         mongoUrl: MONGO_URI,
+        ttl: 60000, // 60sec * 60min * 24h => 1 day /base de datos mongo
       }),
     })
   );
