@@ -1,17 +1,23 @@
-    <div>
-        <h2>Are you sure you want to delete it?</h2>
-        <a href="/{{_id}}/deleted"><button>Yes</button></a>
-        <a href="/{{owner.username}}"><button>No</button></a>
-    </div> 
-    <div>
-        <h2>{{title}}</h2>
-        <p>{{artist}}</p>
-        <audio controls src={{previewURI}}>
-    </div> 
-    <div>
-        <form action="/{{_id}}/edit" method="POST">
-            <label for="postText">Post Text</label>
-                <textarea type="text" name="postText" >{{postText}}</textarea>
-            <button type="submit">SAVE EDIT</button>
-        </form>
+    <div class="relative">
+        <div  class="absolute text-message-confirmation">
+            <h2>Are you sure you want to delete it?</h2>
+            <a href="/{{_id}}/deleted"><button class="btn error">Yes</button></a>
+            <a href="/{{owner.username}}"><button class="btn confirm">No</button></a>
+        </div> 
+        <div class="container-single-post ">
+            <div class="single-post">
+                <div class="spoti-info-single-post">
+                    <h2>{{title}}</h2>
+                    <p>{{artist}}</p>
+                    <img src="{{imageURL}}" alt="">
+                    <audio controls src={{previewURI}}>
+                </div> 
+                <div>
+                    <form action="/{{_id}}/edit" method="POST">
+                        <label for="postText">Post Text</label>
+                            <p class="descriptive-text" >{{postText}}</ptype=>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
