@@ -14,21 +14,19 @@
   <body>
     <nav>
       <ul class="navbar">
+        {{#if userLocals.username}}
         <div class="profile-info">
           <li class="circular--portrait">
             <img class="profile-pic" src="{{userLocals.imageUrl}}" alt="profile picture">
           </li>
           <li class="to-left">
-            {{#if userLocals.username}}
               <a id="header-username" href="/{{userLocals.username}}">{{userLocals.username}}</a>
-            {{/if}}
           </li>
-          {{#if userLocals.username}}
           <li class="to-left">
             <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
           </li>
-          {{/if}}
         </div>
+          {{/if}}
         {{#if userLocals.username}}
           <li class="to-right">
             <a href="/logout">Log out</a>
