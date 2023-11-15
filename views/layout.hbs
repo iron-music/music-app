@@ -38,6 +38,16 @@
         </li>
         {{/unless}}
       </ul>
+      <section class="playbar">
+        <div class="playbar-left">
+          <div>SONG OF THE DAY:</div>
+          <div>Title: {{winnerSong.title}}</div>
+          <div>Artist: {{winnerSong.artist}}</div>
+        </div>
+        <div class="playbar-right">
+          <audio controls load autoplay src="{{winnerSong.previewURI}}">{{winnerSong.previewURI}}</audio>
+        </div>
+      </section>
     </nav>
 
     {{{body}}}

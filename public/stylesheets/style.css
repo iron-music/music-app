@@ -52,6 +52,32 @@ h1 {
   padding: 1em 0 1em 1em;
 }
 
+.playbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.6em 0.3em 0.6em 1.6em;
+  flex-direction: row;
+  background-image: url(/images/trophySVG.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.playbar-left {
+  font-weight: bold;
+}
+
+/* playbar on mobile
+.playbar {
+  display: flex;
+    margin: 0.6em 0.3em 0.6em 1.6em;
+    background-image: url(/images/trophySVG.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    flex-direction: column;
+} */
+
 /* ---------- NAVBAR END */
 
 /*----------- PROFILE START */
