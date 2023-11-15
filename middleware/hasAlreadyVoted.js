@@ -5,7 +5,9 @@ module.exports = async(req, res, next) => {
     console.log(req.params.post)
     
     
-    const post =  await Post.findById(req.params.post).populate("rated")
+    const post =  await Post.findById(req.params.post);
+    
+    post.populate("rated.0")
     console.log(post)
     for (let i = 0; i < post.rated.length ; i ++){
 
