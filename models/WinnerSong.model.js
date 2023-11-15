@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema, model } = require("mongoose");
 
-const WinningSongSchema = new Schema(
+const WinnerSongSchema = new Schema(
     {
         postId: {
             type: mongoose.Schema.Types.ObjectId,
@@ -14,6 +14,6 @@ const WinningSongSchema = new Schema(
     }
 );
 
-const WinningSong = model("Post", WinningSongSchema);
+const WinnerSong = model("WinnerSong", WinnerSongSchema);
 
-module.exports = WinningSong;
+module.exports = WinnerSong;
