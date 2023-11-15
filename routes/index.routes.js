@@ -20,17 +20,19 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
 
   const posts = await Post.find().populate("owner");
 
-
+let counter = -3;
   const finalPosts = posts.map((e) => {
-
+  counter +=3 ;
     if (e.owner.username === req.session.currentUser.username) {
-      
       let e2 = JSON.stringify(e);
       e2 = JSON.parse(e2);
       e2.isOwner = true;
-      
+     //we are tring to pass 3 diferent values for each element that will be iterated
+      e2.ratingIds=[(counter+1).toString(),(counter+2).toString(),(counter+3).toString()];
       return e2;
     }
+
+    e.ratingIds=[(counter+1).toString(),(counter+2).toString(),(counter+3).toString()];
     return e;
 
 

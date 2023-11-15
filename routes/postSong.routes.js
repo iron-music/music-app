@@ -46,11 +46,17 @@ router.post("/:post/rate", async (req, res) => {
     const rating = parseInt(req.body.rating);
     const post = await Post.findById(postId);
     const postScore = parseInt(post.score);
+    //const userId = req.session.currentUser._id;
+    if ( rating === NaN){
+        console.log("NAAAAAN")
+    }
     
     const updatedScore = postScore + rating ;
-console.log(post.score)
+    //console.log(updatedScore)
+    //console.log(rating)
+
     await Post.findByIdAndUpdate(postId,{score: updatedScore})
-    
+    //await Post.findByIdAndUpdate(postId,{$push: {rated: userId}});
     res.send({ updatedScore})
 })
 
