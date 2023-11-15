@@ -4,6 +4,7 @@ const router = express.Router();
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 const Post = require("../models/Post.model");
+const hasAlreadyVoted = require('../middleware/hasAlreadyVoted');
 
 
 //render view
@@ -41,17 +42,18 @@ router.get("/:post/deleted", async (req, res) =>{
 })
 
 //receiving the rating score and updating the Post score field
-router.post("/:post/rate", async (req, res) => {
+router.post("/:post/rate", hasAlreadyVoted, async (req, res) => {
     const postId = req.params.post;
+    const userId = req.session.currentUser._id;
     const rating = parseInt(req.body.rating);
     const post = await Post.findById(postId);
     const postScore = parseInt(post.score);
     
     const updatedScore = postScore + rating ;
-console.log(post.score)
+
     await Post.findByIdAndUpdate(postId,{score: updatedScore})
-    
-    res.send({ updatedScore})
+    await Post.findByIdAndUpdate(postId,{$push: {rated: userId}});
+    res.redirect(`/${req.session.currentUser.username}`);
 })
 
 module.exports = router;
