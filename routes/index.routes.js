@@ -2,7 +2,7 @@ const express = require('express');
 const spotifyApi = require("../api/api");
 const isSameUser = require('../middleware/isSameUser');
 const isLoggedIn = require('../middleware/isLoggedIn');
-
+const checkWinnerSong = require('../middleware/checkWinnerSong');
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ const User = require("../models/User.model");
 const Post = require("../models/Post.model");
 
 /* GET home page */
-router.get("/", (req, res, next) => {
+router.get("/", checkWinnerSong, (req, res, next) => {
   res.render("index");
 });
 

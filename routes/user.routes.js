@@ -3,7 +3,6 @@ const spotifyApi = require("../api/api");
 const isSameUser = require('../middleware/isSameUser');
 const isLoggedIn = require('../middleware/isLoggedIn');
 const fileUploader = require('../config/cloudinary.config');
-const checkWinnerSong = require('../middleware/checkWinnerSong');
 
 const router = express.Router();
 
@@ -23,11 +22,5 @@ router.post("/:user/edit-user",  fileUploader.single("profile-picture"), async (
     res.redirect(`/${username}/edit-user`)
    
 });
-
-router.get("/:user/winner", checkWinnerSong, (req, res) => {
-    return console.log("END");
-});
-
-
 
 module.exports = router;
