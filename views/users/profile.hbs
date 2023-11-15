@@ -5,8 +5,8 @@
             <div></div>
             <div>
             {{#if this.isOwner}}
-                <a href="/{{this._id}}/edit"><button>edit</button></a>
-                <a href="/{{this._id}}/deleting"><button>delete</button></a>
+                <a href="/{{this._id}}/edit"><button class="btn">edit</button></a>
+                <a href="/{{this._id}}/deleting"><button class="btn">delete</button></a>
             {{else }}
                 &nbsp;
             {{/if}} 
@@ -36,7 +36,7 @@
                     </div>
                      
                     <div>
-                        <button type="submit">VOTE!</button>
+                        <button class="btn" type="submit">VOTE!</button>
                     </div>
                 </form>
            
