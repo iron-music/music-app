@@ -23,6 +23,11 @@
         <li class="to-left">
           <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
         </li>
+        <li>
+            <form action="/{{userLocals.username}}" method="POST" >
+              <button type="submit">POST YOUR DAILY SONG</button>
+            </form>
+        </li>
         {{/if}}
         {{#if userLocals.username}}
 		    <li class="to-right">
@@ -38,6 +43,7 @@
         </li>
         {{/unless}}
       </ul>
+
     </nav>
 
     {{{body}}}
