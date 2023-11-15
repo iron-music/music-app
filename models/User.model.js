@@ -22,7 +22,11 @@ const userSchema = new Schema(
       required: true,
       minLength: [5, 'Password must be at least 5 characters long.'],
     },
-    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }]
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+    imageUrl: {
+      type: String,
+      default: "https://bestprofilepictures.com/wp-content/uploads/2020/07/Cool-Profile-Picture-For-Instagram.jpg"
+    }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

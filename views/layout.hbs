@@ -15,21 +15,21 @@
     <nav>
       <ul class="navbar">
         <li class="to-left">
-          {{#if userName}}
-            <a id="header-username" href="/{{userName}}">{{userName}}</a>
+          {{#if userLocals.username}}
+            <a id="header-username" href="/{{userLocals.username}}">{{userLocals.username}}</a>
           {{/if}}
         </li>
-        {{#if userName}}
+        {{#if userLocals.username}}
         <li class="to-left">
-          <a href="/{{userName}}/edit-user" style="">&nbsp;edit user</a>
+          <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
         </li>
         {{/if}}
-        {{#if userName}}
+        {{#if userLocals.username}}
 		    <li class="to-right">
           <a href="/logout">Log out</a>
         </li>
         {{/if}}
-        {{#unless userName}}
+        {{#unless userLocals.username}}
         <li class="to-right">
           <a href="/signup">Sign up</a>
         </li>
