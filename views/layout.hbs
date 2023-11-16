@@ -26,11 +26,14 @@
             <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
           </li>
         </div>
-          {{/if}}
-        {{#if userLocals.username}}
+          <div class="profile-info">
           <li class="to-right">
+           
+            <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png"></a>
             <a href="/logout">Log out</a>
+         
           </li>
+           </div>
         {{/if}}
         {{#unless userLocals.username}}
           <li class="to-right">

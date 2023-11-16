@@ -1,43 +1,46 @@
 <main class="profile-container">
+
     {{#each finalPosts}}
     <div class="card">
-        <div class="button-container">
-            <div></div>
-            <div>
-            {{#if this.isOwner}}
-                <a href="/{{this._id}}/edit"><button class="btn">edit</button></a>
-                <a href="/{{this._id}}/deleting"><button class="btn">delete</button></a>
-            {{else }}
-                &nbsp;
-            {{/if}} 
+        <div class="top-part">
+            <div class="audio-text-card">
+                <h3>{{this.title}}</h3>
+                <p>{{this.artist}}</p>
+                <audio controls load src={{this.previewURI}}></audio>
+            </div>
+            <div class="button-container">
+                    {{#if this.isOwner}}
+                    <a href="/{{this._id}}/edit"><img class="icon" src="/images/editar.png" alt="edit icon"></a>
+                    <a href="/{{this._id}}/deleting"><img class="icon" src="/images/borrar.png" alt="delete icon"></a>
+                    {{else }}
+                    &nbsp;
+                    {{/if}}
             </div>
         </div>
-        <div>
-            <h3>{{this.title}}</h3>
-            <h4>{{this.artist}}</h4>
-        </div>
-        <audio controls load src={{this.previewURI}}></audio>
-        <img src={{this.imageURL}}>
-        <div class="post-content">
-            <span class="post-username">{{this.owner.username}}</span>
-            <p class="postText">{{this.postText}}</p>
-        </div>
-
-        <div class="star-rating">
+        <img class="card-img" src={{this.imageURL}}>
+        {{!-- <div class="bottom-part"> --}}
+            <div class="post-content">
+                <span class="post-username">{{this.owner.username}}:</span>
+                <p class="postText">{{this.postText}}</p>
+            </div>
+            {{#if @root.userLocals.username}}
+            <div class="star-rating">
                 <form action="/{{this._id}}/rate" method="POST">
-                    <div>
-                        <label for="{{this._id}}1" ><i class="fa fa-star"></i></label>  
-                        <input type="radio" id="{{this._id}}1" name="rating"  value="1"></input>
-                        <label for="{{this._id}}2" ><i class="fa fa-star "></i></label>
-                        <input type="radio" id="{{this._id}}2" name="rating"  value="2" ></input>
-                        <label for="{{this._id}}3" ><i class="fa fa-star"></i></label>
-                        <input type="radio" id="{{this._id}}3" name="rating"  value="3"></input>
+                    <div class="padding">
+                        <label for="{{this._id}}1"><i class="fa fa-star"></i></label>
+                        <input type="radio" id="{{this._id}}1" name="rating" value="1"></input>
+                        <label for="{{this._id}}2"><i class="fa fa-star "></i></label>
+                        <input type="radio" id="{{this._id}}2" name="rating" value="2"></input>
+                        <label for="{{this._id}}3"><i class="fa fa-star"></i></label>
+                        <input type="radio" id="{{this._id}}3" name="rating" value="3"></input>
                     </div>
                     <div>
                         <button class="btn" type="submit">VOTE!</button>
                     </div>
                 </form>
-        </div>
+            </div>
+        {{!-- </div> --}}
+        {{/if}}
 
 
 

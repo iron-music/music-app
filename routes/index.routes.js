@@ -12,8 +12,13 @@ const Post = require("../models/Post.model");
 const hasAlreadyPosted = require('../middleware/hasAlreadyPosted');
 
 /* GET home page */
-router.get("/", checkWinnerSong, (req, res, next) => {
-  res.render("index");
+router.get("/", checkWinnerSong, async(req, res, next) => {
+  const finalPosts = await Post.find().populate("owner");
+
+
+
+
+  res.render("users/profile", { finalPosts });
 });
 
 router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
@@ -37,16 +42,17 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
 
   })
 
+
   // res.send(finalPosts)
   res.render("users/profile", { finalPosts });
 });
 
 
-router.post("/:user" , hasAlreadyPosted, (req, res)=>{
+router.post("/:user" , (req, res)=>{
   res.redirect(`/${req.session.currentUser.username}/create`);
 })
 
-router.get("/:user/create", isLoggedIn, isSameUser, (req, res) => {
+router.get("/:user/create", hasAlreadyPosted, isLoggedIn, isSameUser, (req, res) => {
   const userName = req.params.user;
   const song = req.query.song;
   const info = {

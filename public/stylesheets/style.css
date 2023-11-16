@@ -18,6 +18,13 @@ h1 {
 }
 
 /* ---------- NAVBAR START */
+nav {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 500;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -80,25 +87,29 @@ h1 {
     flex-direction: column;
 } */
 
-.profile-pic{
+.profile-pic {
   width: 100%;
   height: auto;
-  
+
 }
-.circular--portrait { position: relative;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    border-radius: 50%;
-    border: 0.5px solid grey;
-    
+
+.circular--portrait {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0.5px solid grey;
+
 }
-.profile-info{
+
+.profile-info {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 30px;
 }
+
 /* ---------- NAVBAR END */
 
 /*----------- PROFILE START */
@@ -115,25 +126,33 @@ h1 {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  border: 2px solid  rgb(125, 125, 125);
+  border: 2px solid rgb(125, 125, 125);
   background-color: rgb(28, 28, 28);
   width: 320px;
-  height: 500px ;
+  height: 500px;
   margin-top: 8px;
   border-radius: 15px;
   align-items: center;
-  color:white;
+  color: white;
 }
-.card img{
+
+.card-img {
   border: 2px solid rgb(125, 125, 125);
 }
 
 .button-container {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 20px;
+  
 }
 
+.audio-text-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 
 /* audio controls*/
 audio {
@@ -142,21 +161,29 @@ audio {
   width: 250px;
   height: 28px;
   margin: 8px;
-}/*star rating start*/
+}
+
+/*star rating start*/
 
 .star-rating {
-	white-space: nowrap;
+  white-space: nowrap;
 }
+
 .star-rating [type="radio"] {
-	appearance: none;
+  appearance: none;
 }
+
 .star-rating i {
-	font-size: 2em;
-	transition: 0.3s;
+  font-size: 2em;
+  transition: 0.3s;
+  color:rgba(255, 255, 255, 0.347);
 }
+
 .star-rating i:hover {
   color: #faec1b;
 }
+
+
 /*this is not working but we want to do something similar
 .star-rating label:has(~ :checked) i {
   color: #faec1b;
@@ -165,11 +192,21 @@ audio {
 */
 
 /*star rating end */
-.postText{
+.postText {
   /* background-color: blueviolet; */
   font-style: italic;
+  font-size: 0.9em;
+  max-width: 290px;
+  overflow: hidden;
 }
 
+.post-content{
+  align-self:flex-start;
+  margin-left: 10px;
+}
+.padding{
+  padding: 8px;
+}
 /*----------- PROFILE END */
 
 
@@ -185,28 +222,73 @@ audio {
 }
 
 .edituser-username {
-    font-weight: bold;
-    font-size: 1.7em;
-    padding: 1em;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding: 1em;
 }
 
 /*----------- EDIT USER END */
 /*----------- NOT ALLOWED TO POST */
-.not-allowed{
+.not-allowed {
   height: calc(100% - 124px);
   width: 100%;
   background-color: #000;
   background-image: url("https://media.giphy.com/media/6oyMuvF0iy0T8UqPwg/giphy.gif");
-  background-size:contain;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
 }
-.margin-top{
-  margin-top:5px;
+
+.margin-top {
+  margin-top: 5px;
 }
 
 
 /*----------- NOT ALLOWED TO POST END */
+.micro {
+  height: 50px;
+
+}
+
+.icon {
+  height: 30px;
+}
+
+/* .song-list [type="radio"] {
+    appearance: none;
+  } */
+.song-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+
+}
+.song-card{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+height: 150px;
+width: 150px;
+align-items: center;
+border-radius: 10px;
+background-color: #282828;
+margin-top:20px;
+}
+.cover{
+  height: 80px;
+  width: 80px;
+}
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-part{
+  display: flex;
+
+}
