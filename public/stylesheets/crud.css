@@ -10,6 +10,8 @@
     /* background-color: red; */
 }
 
+
+
 .single-post{
     display: flex;
     flex-direction: column;
@@ -75,4 +77,22 @@
 
 .align-self{
     align-self: center;
+}
+
+/* route /:user/create */
+.container-songs-spoty{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 10px;
+    width: 100%;
+    height: calc(100% - 124px);
+    color:white;
+    background-color: #161616;
+    /* background-color: red; */
+}
+.input{
+    width:80vw;
+    height: 30px;
+    border-radius: 50px;
 }
