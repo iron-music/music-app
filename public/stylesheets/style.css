@@ -130,19 +130,21 @@ nav {
 
 /*----------- PROFILE START */
 .profile-container {
-  height: calc(100% - 124px);
+  min-height: calc(100vh - 124px);
   display: flex;
   flex-wrap: wrap;
-  min-height: 90%;
+  /* min-height: 90%; */
   width: 100%;
   background-color: #000;
   justify-content: space-around;
+  align-items: center;
 }
 
 .card {
   padding: 5px;
   display: flex;
   flex-direction: column;
+  
   border: 2px solid rgb(125, 125, 125);
   background-color: rgb(28, 28, 28);
   width: 320px;
@@ -310,6 +312,17 @@ margin-top:20px;
   align-items: center;
 }
 
+.post-text-delete{
+  text-align:center;
+  font-size: 0.9em;
+  font-style: italic;
+
+}
+.margin-left{
+  margin-left: 20px;
+}
+
+
 @media only screen and (max-width: 600px) {
   .logout-text {
     display: none;
@@ -352,6 +365,7 @@ margin-top:20px;
     
   }
   .profile-info {
+
     padding-left: 0;
   }
 }
