@@ -8,14 +8,13 @@ const router = express.Router();
 
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
-const Post = require("../models/Post.model");
 
-router.get("/:user/edit-user",  async (req, res) => {
+router.get("/:user/edit-user", isLoggedIn, isSameUser,  async (req, res) => {
     res.render("users/edit-user");
 });
 
-router.post("/:user/edit-user",  fileUploader.single("profile-picture"), async (req, res, next) => {
-    const {_id ,username, email} = req.session.currentUser;
+router.post("/:user/edit-user", isLoggedIn, isSameUser, fileUploader.single("profile-picture"), async (req, res, next) => {
+    const {_id ,username} = req.session.currentUser;
     
     const updatedUser = await User.findByIdAndUpdate(_id,{imageUrl: req.file.path}, {new:true});
     req.session.currentUser = updatedUser;
