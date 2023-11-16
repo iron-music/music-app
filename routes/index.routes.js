@@ -12,8 +12,10 @@ const Post = require("../models/Post.model");
 const hasAlreadyPosted = require('../middleware/hasAlreadyPosted');
 
 /* GET home page */
-router.get("/", checkWinnerSong, (req, res, next) => {
-  res.render("index");
+router.get("/", checkWinnerSong, async(req, res, next) => {
+  const finalPosts = await Post.find().populate("owner");
+
+  res.render("users/profile", { finalPosts });
 });
 
 router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
