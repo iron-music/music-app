@@ -109,11 +109,27 @@ nav {
   align-items: center;
   padding-left: 30px;
 }
+.logout-icon {
+  display: none;
+}
+
+/* .logout-text {
+  align-self: center;
+} */
+
+.edit-icon{
+  display:none;
+  
+}
+.playbar-left-mobile{
+  display:none;
+}
 
 /* ---------- NAVBAR END */
 
 /*----------- PROFILE START */
 .profile-container {
+  height: calc(100% - 124px);
   display: flex;
   flex-wrap: wrap;
   min-height: 90%;
@@ -144,7 +160,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 20px;
+  width: 30px;
   
 }
 
@@ -290,5 +306,47 @@ margin-top:20px;
 
 .top-part{
   display: flex;
+  align-items: center;
+}
 
+@media only screen and (max-width: 600px) {
+  .logout-text {
+    display: none;
+  }
+  .logout-icon{
+    display: block;
+    
+  }
+  .icon-shut-down{
+    height: 40px;
+  }
+  .display-flex{
+    display:flex;
+
+  }
+  .playbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.6em 0.3em 0.6em 1.6em;
+    flex-direction: row;
+    background-image: none;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+  }
+  .playbar-left{
+    display:none;
+  }
+  .playbar-left-mobile{
+    display:block;
+  }
+
+
+  .edit-text {
+    display: none;
+  }
+  .edit-icon{
+    display: block;
+    
+  }
 }
