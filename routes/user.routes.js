@@ -20,7 +20,6 @@ router.post("/:user/edit-user",  fileUploader.single("profile-picture"), async (
     const updatedUser = await User.findByIdAndUpdate(_id,{imageUrl: req.file.path}, {new:true});
     req.session.currentUser = updatedUser;
     res.redirect(`/${username}/edit-user`)
-   
 });
 
 module.exports = router;
