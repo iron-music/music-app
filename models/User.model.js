@@ -25,7 +25,7 @@ const userSchema = new Schema(
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
     imageUrl: {
       type: String,
-      default: "https://bestprofilepictures.com/wp-content/uploads/2020/07/Cool-Profile-Picture-For-Instagram.jpg"
+      default: "/images/profile-pic-default.svg"
     }
   },
   {
