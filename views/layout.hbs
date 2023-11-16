@@ -28,11 +28,13 @@
           </li>
         </div>
           <div class="profile-info">
-          <li class="to-right display-flex">
-            <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png"></a>
-            <a class="logout-text" href="/logout">Log out</a>
-            <a class="logout-icon" href="/logout"><img class="icon-shut-down" src="/images/cerrar-sesion.png"></a>
-          </li>
+            <li class="to-right display-flex">
+              <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png"></a>
+              <a class="logout-text" href="/logout">Log out</a>
+            </li>
+            <li class="to-right display-flex">
+              <a class="logout-icon" href="/logout"><img class="icon-shut-down" src="/images/cerrar-sesion.png"></a>
+            </li>
           </div>
         {{/if}}
         {{#unless userLocals.username}}
