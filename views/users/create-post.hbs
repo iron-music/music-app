@@ -7,7 +7,7 @@
             <audio controls src={{preview}}>
         </div>
         <div>
-            <form  class="form-single-post" action="/:user/creating" method="POST">
+            <form  class="form-single-post" action="/{{userLocals.username}}/creating" method="POST">
                 <label for="postText">Post Text</label>
                     <textarea class="text-area-custom" type="text" name="postText" placeholder="Description..." maxlength="200" rows="4" cols="30"></textarea>
                 <button class="btn" type="submit">SAVE</button>
