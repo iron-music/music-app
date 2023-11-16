@@ -83,7 +83,7 @@ router.get("/:user/create", isLoggedIn, isSameUser, (req, res) => {
   }
 });
 
-router.post("/:user/create", async (req, res) => {
+router.post("/:user/create", hasAlreadyPosted, async (req, res) => {
   // console.log(req.body.selectedSong)
   // res.send(req.body.selectedSong)
   const songDetails = await JSON.parse(req.body.selectedSong)
