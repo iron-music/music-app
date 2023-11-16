@@ -6,6 +6,7 @@
     
     justify-content: center;
     align-items: center;
+    color: white;
     background-color: #161616;
     /* background-color: red; */
 }
@@ -98,3 +99,10 @@
     height: 30px;
     border-radius: 50px;
 }
+
+.input-auth{
+    width: 400px;
+    padding-top: 20px;
+
+}
+
