@@ -2,14 +2,29 @@
     <form class="form-single-post" action="/{{userName}}/create" method="GET">
         <label>SEARCH YOUR SONG {{userName}}
             <div>
-                <input class="input" name="song" type="text"/>
+                <input class="input" name="song" type="text" />
             </div>
         </label>
-        <button type="submit">search!</button>
+        <button class="btn margin-top" type="submit">search!</button>
     </form>
     {{#if cleanSongsArr}}
     <h1>SONGS LIST</h1>
-    <form action="/{{userName}}/create" method="POST">
+    <form action="/{{userName}}/create" method="POST" class="form-container">
+        <div class="song-list">
+
+            {{#each cleanSongsArr}}
+            <div class="song-card">
+                <label>{{this.name}}</label>
+                <img class="cover" src={{this.imageURL}}>
+                <input type="radio" name="selectedSong" value="{{this.stringified}}">
+            </div>
+            {{/each }}
+
+        </div>
+        <button class="btn margin-top" type="submit">select</button>
+    </form>
+
+    <!--<form action="/{{userName}}/create" method="POST">
     <select name="selectedSong">
         {{#each cleanSongsArr}}
             <option value="{{this.stringified}}">{{this.name}}</option> 
@@ -17,6 +32,6 @@
         </select>
         
         <button type="submit">select</button>
-    </form>
+    </form>-->
     {{/if}}
 </div>
