@@ -12,8 +12,7 @@ module.exports = async (req, res, next) => {
     let list = null;
     let bestScoreSong;
     try {
-        let winnerSongOfToday = null;
-        //let winnerSongOfToday = await WinnerSong.findOne({createdAt: {"$gt": today}});
+        let winnerSongOfToday = await WinnerSong.findOne({createdAt: {"$gt": today}});
         if (!winnerSongOfToday) {
             
                 // search for songs of yesterday and find the greatest score among them.
@@ -21,6 +20,7 @@ module.exports = async (req, res, next) => {
                 yesterday.setDate(yesterday.getDate() - 1);
         
                 list = await Post.find({"createdAt" : {"$gte": yesterday, "$lte":today}}).sort({"score":-1});
+                //console.log("FOUND SONG", list[0])
                 if (list[0]) {
                     bestScoreSong = list[0];
                 }
@@ -29,8 +29,7 @@ module.exports = async (req, res, next) => {
                     // no song can be a winner so just don't do anything and proceed.
                     return next();
                 }
-                // EXAMPLE: let {b, ...rest} = obj;
-                console.log("BEFORE DESTRUCT");
+                //console.log("BEFORE DESTRUCT");
                 const {
                     title, 
                     artist,
@@ -41,15 +40,6 @@ module.exports = async (req, res, next) => {
                     score,
                     rated
                 } = bestScoreSong;
-                 console.log("AFTER DESTRUCT", title, artist);
-                /* console.log("logging: ",title, 
-                    "artist": artist,
-                    "previewURI": previewURI,
-                    imageURL,
-                    owner,
-                    postText,
-                    score,
-                    rated); */
                 const WinnerSongData = {
                     title, 
                     artist,
@@ -60,10 +50,10 @@ module.exports = async (req, res, next) => {
                     score,
                     rated
                 }
-                console.log(WinnerSongData);
+                //console.log(WinnerSongData);
                 await WinnerSong.create({title, artist, previewURI, imageURL, owner, postText, score, rated});
                 await setResLocalsUtil(req, res);
-                console.log("OK WINNERSONG ADDED");
+                //console.log("OK WINNERSONG ADDED");
             }
         else {
             console.log("TODAY THE WINNERSONG ALREADY EXISTS");
