@@ -12,7 +12,8 @@ module.exports = async (req, res, next) => {
     let list = null;
     let bestScoreSong;
     try {
-        let winnerSongOfToday = await WinnerSong.findOne({createdAt: {"$gt": today}});
+        let winnerSongOfToday = null;
+        //let winnerSongOfToday = await WinnerSong.findOne({createdAt: {"$gt": today}});
         if (!winnerSongOfToday) {
             
                 // search for songs of yesterday and find the greatest score among them.
@@ -28,7 +29,39 @@ module.exports = async (req, res, next) => {
                     // no song can be a winner so just don't do anything and proceed.
                     return next();
                 }
-                await WinnerSong.create({postId: bestScoreSong._id});
+                // EXAMPLE: let {b, ...rest} = obj;
+                console.log("BEFORE DESTRUCT");
+                const {
+                    title, 
+                    artist,
+                    previewURI,
+                    imageURL,
+                    owner,
+                    postText,
+                    score,
+                    rated
+                } = bestScoreSong;
+                 console.log("AFTER DESTRUCT", title, artist);
+                /* console.log("logging: ",title, 
+                    "artist": artist,
+                    "previewURI": previewURI,
+                    imageURL,
+                    owner,
+                    postText,
+                    score,
+                    rated); */
+                const WinnerSongData = {
+                    title, 
+                    artist,
+                    previewURI,
+                    imageURL,
+                    owner,
+                    postText,
+                    score,
+                    rated
+                }
+                console.log(WinnerSongData);
+                await WinnerSong.create({title, artist, previewURI, imageURL, owner, postText, score, rated});
                 await setResLocalsUtil(req, res);
                 console.log("OK WINNERSONG ADDED");
             }

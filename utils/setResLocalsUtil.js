@@ -12,9 +12,9 @@ module.exports = async (req, res) => {
     // get Songoftheday info
     const today = new Date();
     today.setUTCHours(0,0,0,0);
-    const song = await WinnerSong.findOne({createdAt: {"$gt": today}}).populate("postId");
+    const song = await WinnerSong.findOne({createdAt: {"$gt": today}});
     if (song) {
-        res.locals.winnerSong = song.postId;
+        res.locals.winnerSong = song;
     }
     else {
         res.locals.winnerSong = "";

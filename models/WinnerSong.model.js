@@ -3,13 +3,24 @@ const { Schema, model } = require("mongoose");
 
 const WinnerSongSchema = new Schema(
     {
-        postId: {
+        title: String,
+        artist: String,
+        // songSpotiURI: String,
+        previewURI: String,
+        imageURL: String,
+        owner: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
+            ref: "User"
+        },
+        postText: String,
+        score: {
+            type: Number,
+            default: 0
+        },
+        rated: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],       
     },
     {
-        // this second object adds extra properties: `createdAt` and `updatedAt`
+        // this adds extra properties: `createdAt` and `updatedAt`
         timestamps: true
     }
 );
