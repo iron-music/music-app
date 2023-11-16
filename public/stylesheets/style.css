@@ -193,7 +193,7 @@ audio {
 /*----------- EDIT USER END */
 /*----------- NOT ALLOWED TO POST */
 .not-allowed{
-  height: calc(100% - 57px);
+  height: calc(100% - 124px);
   width: 100%;
   background-color: #000;
   background-image: url("https://media.giphy.com/media/6oyMuvF0iy0T8UqPwg/giphy.gif");
