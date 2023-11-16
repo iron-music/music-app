@@ -1,13 +1,11 @@
 <div id="login-form" class="container-single-post">
-  <h2>Log In</h2>
-      <form action="/login" method="POST">
-      <label> Username
+      <form class="auth-form" action="/login" method="POST">
+      <h2>Log In</h2>
+      <label> Username</label>
         <input class="input-auth" type="text" name="username" placeholder="Your username" />
-      </label>
-      <label> Password
+      <label> Password </label>
         <input class="input-auth" type="password" name="password" placeholder="Your password" />
-      </label>
-      <button type="submit">Log In</button>
+      <button type="submit" class="btn align-self">Log In</button>
       {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
       {{/if}}
