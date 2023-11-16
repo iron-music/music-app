@@ -141,14 +141,14 @@ nav {
 }
 
 .card {
-  padding: 5px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   
   border: 2px solid rgb(125, 125, 125);
   background-color: rgb(28, 28, 28);
   width: 320px;
-  height: 500px;
+  height: 540px;
   margin-top: 8px;
   border-radius: 15px;
   align-items: center;
