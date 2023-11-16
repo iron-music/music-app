@@ -42,11 +42,11 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
 });
 
 
-router.post("/:user" , hasAlreadyPosted, (req, res)=>{
+router.post("/:user" , (req, res)=>{
   res.redirect(`/${req.session.currentUser.username}/create`);
 })
 
-router.get("/:user/create", isLoggedIn, isSameUser, (req, res) => {
+router.get("/:user/create", hasAlreadyPosted, isLoggedIn, isSameUser, (req, res) => {
   const userName = req.params.user;
   const song = req.query.song;
   const info = {

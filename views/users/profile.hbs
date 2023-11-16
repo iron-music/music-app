@@ -1,12 +1,13 @@
 <main class="profile-container">
+    
     {{#each finalPosts}}
     <div class="card">
         <div class="button-container">
             <div></div>
             <div>
             {{#if this.isOwner}}
-                <a href="/{{this._id}}/edit"><button class="btn">edit</button></a>
-                <a href="/{{this._id}}/deleting"><button class="btn">delete</button></a>
+                <a href="/{{this._id}}/edit"><img class="icon" src="/images/editar.png" alt="edit icon"></a>
+                <a href="/{{this._id}}/deleting"><img class="icon" src="/images/borrar.png" alt="delete icon"></a>
             {{else }}
                 &nbsp;
             {{/if}} 
@@ -17,7 +18,7 @@
             <h4>{{this.artist}}</h4>
         </div>
         <audio controls load src={{this.previewURI}}></audio>
-        <img src={{this.imageURL}}>
+        <img class="card-img" src={{this.imageURL}}>
         <div class="post-content">
             <span class="post-username">{{this.owner.username}}</span>
             <p class="postText">{{this.postText}}</p>

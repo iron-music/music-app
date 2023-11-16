@@ -18,6 +18,12 @@ h1 {
 }
 
 /* ---------- NAVBAR START */
+nav{
+  position:sticky;
+  top:0;
+  background-color: white;
+  z-index: 500;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -124,7 +130,7 @@ h1 {
   align-items: center;
   color:white;
 }
-.card img{
+.card-img{
   border: 2px solid rgb(125, 125, 125);
 }
 
@@ -210,3 +216,10 @@ audio {
 
 
 /*----------- NOT ALLOWED TO POST END */
+.micro{
+  height: 50px;
+
+}
+.icon{
+  height: 30px;
+}
