@@ -23,17 +23,19 @@
               <a id="header-username" href="/{{userLocals.username}}">{{userLocals.username}}</a>
           </li>
           <li class="to-left">
-            <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
+            <a class="edit-text" href="/{{userLocals.username}}/edit-user" style="">edit user</a>
+            <a class="edit-icon" href="/{{userLocals.username}}/edit-user" style=""><img class="icon" src="/images/lapiz.png" alt="edit icon"></a>
           </li>
         </div>
           <div class="profile-info">
-          <li class="to-right">
-           
-            <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png"></a>
-            <a href="/logout">Log out</a>
-         
-          </li>
-           </div>
+            <li class="to-right display-flex">
+              <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png"></a>
+              <a class="logout-text" href="/logout">Log out</a>
+              <a class="logout-icon" href="/logout"><img class="icon-shut-down" src="/images/cerrar-sesion.png"></a>
+            {{!-- </li>
+            <li class="to-right display-flex">--}}
+            </li>
+          </div>
         {{/if}}
         {{#unless userLocals.username}}
           <li class="to-right">
@@ -49,6 +51,10 @@
           <div>SONG OF THE DAY:</div>
           <div>Title: {{winnerSong.title}}</div>
           <div>Artist: {{winnerSong.artist}}</div>
+        </div>
+        <div class="playbar-left-mobile">
+          <div>{{winnerSong.title}}</div>
+
         </div>
         <div class="playbar-right">
           <audio controls load autoplay src="{{winnerSong.previewURI}}">{{winnerSong.previewURI}}</audio>

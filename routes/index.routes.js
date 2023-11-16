@@ -21,24 +21,22 @@ router.get("/", checkWinnerSong, async(req, res, next) => {
   res.render("users/profile", { finalPosts });
 });
 
-router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
+router.get("/:user",  isLoggedIn, isSameUser, async (req, res) => {
 
   const posts = await Post.find().populate("owner");
 
 
-  const finalPosts = posts.map((e) => {
+  const finalPosts = posts.map((element) => {
 
-    if (e.owner.username === req.session.currentUser.username) {
+    if (element.owner.username === req.session.currentUser.username) {
       
-      let e2 = JSON.stringify(e);
-      e2 = JSON.parse(e2);
-      e2.isOwner = true;
+      let newElement = JSON.stringify(element);
+      newElement = JSON.parse(newElement);
+      newElement.isOwner = true;
       
-      return e2;
+      return newElement;
     }
-    return e;
-
-
+    return element;
 
   })
 
@@ -48,11 +46,11 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
 });
 
 
-router.post("/:user" , (req, res)=>{
+router.post("/:user" , isLoggedIn, isSameUser, hasAlreadyPosted, (req, res)=>{
   res.redirect(`/${req.session.currentUser.username}/create`);
 })
 
-router.get("/:user/create", hasAlreadyPosted, isLoggedIn, isSameUser, (req, res) => {
+router.get("/:user/create", isLoggedIn, isSameUser, hasAlreadyPosted, (req, res) => {
   const userName = req.params.user;
   const song = req.query.song;
   const info = {
@@ -89,7 +87,7 @@ router.get("/:user/create", hasAlreadyPosted, isLoggedIn, isSameUser, (req, res)
   }
 });
 
-router.post("/:user/create", hasAlreadyPosted, async (req, res) => {
+router.post("/:user/create", isLoggedIn, isSameUser, hasAlreadyPosted, async (req, res) => {
   // console.log(req.body.selectedSong)
   // res.send(req.body.selectedSong)
   const songDetails = await JSON.parse(req.body.selectedSong)
@@ -100,7 +98,7 @@ router.post("/:user/create", hasAlreadyPosted, async (req, res) => {
 
 })
 
-router.post("/:user/creating", async (req, res) => {
+router.post("/:user/creating",  isLoggedIn, isSameUser,  hasAlreadyPosted, async (req, res) => {
   const songDetails = req.body;
   //const songDetails = await JSON.parse(req.body.selectedSong)
   console.log(songDetails)
