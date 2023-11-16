@@ -5,8 +5,8 @@
             <div></div>
             <div>
             {{#if this.isOwner}}
-                <a href="/{{this._id}}/edit"><button>edit</button></a>
-                <a href="/{{this._id}}/deleting"><button>delete</button></a>
+                <a href="/{{this._id}}/edit"><button class="btn">edit</button></a>
+                <a href="/{{this._id}}/deleting"><button class="btn">delete</button></a>
             {{else }}
                 &nbsp;
             {{/if}} 
@@ -25,21 +25,18 @@
 
         <div class="star-rating">
                 <form action="/{{this._id}}/rate" method="POST">
-                    
                     <div>
-                        <label for="1" ><i class="fa fa-star"></i></label>  
-                        <input type="radio" id="1" name="rating"  value="1"></input>
-                        <label for="2" ><i class="fa fa-star "></i></label>
-                        <input type="radio" id="2" name="rating"  value="2" ></input>
-                        <label for="2" ><i class="fa fa-star"></i></label>
-                        <input type="radio" id="3" name="rating"  value="3"></input>
+                        <label for="{{this._id}}1" ><i class="fa fa-star"></i></label>  
+                        <input type="radio" id="{{this._id}}1" name="rating"  value="1"></input>
+                        <label for="{{this._id}}2" ><i class="fa fa-star "></i></label>
+                        <input type="radio" id="{{this._id}}2" name="rating"  value="2" ></input>
+                        <label for="{{this._id}}3" ><i class="fa fa-star"></i></label>
+                        <input type="radio" id="{{this._id}}3" name="rating"  value="3"></input>
                     </div>
-                     
                     <div>
-                        <button type="submit">VOTE!</button>
+                        <button class="btn" type="submit">VOTE!</button>
                     </div>
                 </form>
-           
         </div>
 
 

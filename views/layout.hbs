@@ -14,28 +14,31 @@
   <body>
     <nav>
       <ul class="navbar">
-        <li class="to-left">
-          {{#if userLocals.username}}
-            <a id="header-username" href="/{{userLocals.username}}">{{userLocals.username}}</a>
+        {{#if userLocals.username}}
+        <div class="profile-info">
+          <li class="circular--portrait">
+            <img class="profile-pic" src="{{userLocals.imageUrl}}" alt="profile picture">
+          </li>
+          <li class="to-left">
+              <a id="header-username" href="/{{userLocals.username}}">{{userLocals.username}}</a>
+          </li>
+          <li class="to-left">
+            <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
+          </li>
+        </div>
           {{/if}}
-        </li>
         {{#if userLocals.username}}
-        <li class="to-left">
-          <a href="/{{userLocals.username}}/edit-user" style="">&nbsp;edit user</a>
-        </li>
-        {{/if}}
-        {{#if userLocals.username}}
-		    <li class="to-right">
-          <a href="/logout">Log out</a>
-        </li>
+          <li class="to-right">
+            <a href="/logout">Log out</a>
+          </li>
         {{/if}}
         {{#unless userLocals.username}}
-        <li class="to-right">
-          <a href="/signup">Sign up</a>
-        </li>
-        <li class="to-right">
-          <a href="/login">Log in</a>
-        </li>
+          <li class="to-right">
+            <a href="/signup">Sign up</a>
+          </li>
+          <li class="to-right">
+            <a href="/login">Log in</a>
+          </li>
         {{/unless}}
       </ul>
       <section class="playbar">

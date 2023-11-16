@@ -9,6 +9,7 @@ const router = express.Router();
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 const Post = require("../models/Post.model");
+const hasAlreadyPosted = require('../middleware/hasAlreadyPosted');
 
 /* GET home page */
 router.get("/", checkWinnerSong, (req, res, next) => {
@@ -23,13 +24,11 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
   const finalPosts = posts.map((e) => {
 
     if (e.owner.username === req.session.currentUser.username) {
-      console.log(e)
-      console.log(req.session.currentUser.username)
-
+      
       let e2 = JSON.stringify(e);
       e2 = JSON.parse(e2);
       e2.isOwner = true;
-      console.log("e2: ", e2);
+      
       return e2;
     }
     return e;
@@ -42,6 +41,10 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
   res.render("users/profile", { finalPosts });
 });
 
+
+router.post("/:user" , hasAlreadyPosted, (req, res)=>{
+  res.redirect(`/${req.session.currentUser.username}/create`);
+})
 
 router.get("/:user/create", isLoggedIn, isSameUser, (req, res) => {
   const userName = req.params.user;

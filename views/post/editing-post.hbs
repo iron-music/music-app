@@ -6,12 +6,10 @@
             <img src="{{imageURL}}" alt="">
             <audio controls src={{previewURI}}>
         </div>
-        <div class="form-single-post">
-            <form action="/{{_id}}/edit" method="POST">
+            <form class="form-single-post" action="/{{_id}}/edit" method="POST">
                 <label for="postText">{{userLocals.username}}Post Text</label>
                 <textarea class="text-area-custom" type="text" name="postText">{{postText}}</textarea>
-                <button type="submit">SAVE EDIT</button>
+                <button class="btn align-self" type="submit">SAVE EDIT</button>
             </form>
-        </div>
     </div>
 </div>
