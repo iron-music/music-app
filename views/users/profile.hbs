@@ -1,16 +1,16 @@
 <main class="profile-container">
-    
+
     {{#each finalPosts}}
     <div class="card">
         <div class="button-container">
             <div></div>
             <div>
-            {{#if this.isOwner}}
+                {{#if this.isOwner}}
                 <a href="/{{this._id}}/edit"><img class="icon" src="/images/editar.png" alt="edit icon"></a>
                 <a href="/{{this._id}}/deleting"><img class="icon" src="/images/borrar.png" alt="delete icon"></a>
-            {{else }}
+                {{else }}
                 &nbsp;
-            {{/if}} 
+                {{/if}}
             </div>
         </div>
         <div>
@@ -23,24 +23,23 @@
             <span class="post-username">{{this.owner.username}}</span>
             <p class="postText">{{this.postText}}</p>
         </div>
-
-                        {{#if userLocals.username}}
+        {{#if @root.userLocals.username}}
         <div class="star-rating">
-                <form action="/{{this._id}}/rate" method="POST">
-                    <div>
-                        <label for="{{this._id}}1" ><i class="fa fa-star"></i></label>  
-                        <input type="radio" id="{{this._id}}1" name="rating"  value="1"></input>
-                        <label for="{{this._id}}2" ><i class="fa fa-star "></i></label>
-                        <input type="radio" id="{{this._id}}2" name="rating"  value="2" ></input>
-                        <label for="{{this._id}}3" ><i class="fa fa-star"></i></label>
-                        <input type="radio" id="{{this._id}}3" name="rating"  value="3"></input>
-                    </div>
-                    <div>
-                        <button class="btn" type="submit">VOTE!</button>
-                    </div>
-                </form>
+            <form action="/{{this._id}}/rate" method="POST">
+                <div>
+                    <label for="{{this._id}}1"><i class="fa fa-star"></i></label>
+                    <input type="radio" id="{{this._id}}1" name="rating" value="1"></input>
+                    <label for="{{this._id}}2"><i class="fa fa-star "></i></label>
+                    <input type="radio" id="{{this._id}}2" name="rating" value="2"></input>
+                    <label for="{{this._id}}3"><i class="fa fa-star"></i></label>
+                    <input type="radio" id="{{this._id}}3" name="rating" value="3"></input>
+                </div>
+                <div>
+                    <button class="btn" type="submit">VOTE!</button>
+                </div>
+            </form>
         </div>
-                        {{/if}}
+        {{/if}}
 
 
 

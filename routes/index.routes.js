@@ -15,6 +15,9 @@ const hasAlreadyPosted = require('../middleware/hasAlreadyPosted');
 router.get("/", checkWinnerSong, async(req, res, next) => {
   const finalPosts = await Post.find().populate("owner");
 
+
+
+
   res.render("users/profile", { finalPosts });
 });
 
@@ -38,6 +41,7 @@ router.get("/:user", isLoggedIn, isSameUser, async (req, res) => {
 
 
   })
+
 
   // res.send(finalPosts)
   res.render("users/profile", { finalPosts });
