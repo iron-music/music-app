@@ -13,7 +13,6 @@ router.get("/:post/edit", isLoggedIn, async (req, res) => {
     const postId = req.params.post
     //security layer
     const postToCheck = await Post.findById(postId);
-    console.log(req.session.currentUser._id, postToCheck.owner)
     if (req.session.currentUser._id != postToCheck.owner) {
         return res.render("not-found");
     }
@@ -28,7 +27,6 @@ router.post("/:post/edit", isLoggedIn, async (req, res) => {
     const postId = req.params.post
     //security layer
     const postToCheck = await Post.findById(postId);
-    console.log(req.session.currentUser._id, postToCheck.owner)
     if (req.session.currentUser._id != postToCheck.owner) {
         return res.render("not-found");
     }
@@ -43,7 +41,6 @@ router.get("/:post/deleting", isLoggedIn, async (req, res) => {
     const postId = req.params.post;
     //security layer
     const postToCheck = await Post.findById(postId);
-    console.log(req.session.currentUser._id, postToCheck.owner)
     if (req.session.currentUser._id != postToCheck.owner) {
         return res.render("not-found");
     }
@@ -57,7 +54,6 @@ router.get("/:post/deleted", isLoggedIn, async (req, res) => {
     const postId = req.params.post;
     //security layer
     const postToCheck = await Post.findById(postId);
-    console.log(req.session.currentUser._id, postToCheck.owner)
     if (req.session.currentUser._id != postToCheck.owner) {
         return res.render("not-found");
     }

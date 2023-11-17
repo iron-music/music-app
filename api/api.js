@@ -3,7 +3,8 @@ const SpotifyWebApi = require('spotify-web-api-node');
 // setting the spotify-api goes here:
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET
+    clientSecret: process.env.CLIENT_SECRET,
+    redirectUri:"https://ironmusic.adaptable.app/"
 });
 
   // Retrieve an access token
