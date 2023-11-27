@@ -29,7 +29,7 @@
         </div>
           <div class="profile-info">
             <li class="to-right display-flex">
-              <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png"></a>
+              <a href="/{{userLocals.username}}/create"><img class="micro" src="/images/agregar-microfono.png" title="Add your song of the day" alt="add song button"></a>
               <a class="logout-text" href="/logout">Log out</a>
               <a class="logout-icon" href="/logout"><img class="icon-shut-down" src="/images/cerrar-sesion.png"></a>
             {{!-- </li>
@@ -57,7 +57,11 @@
 
         </div>
         <div class="playbar-right">
+<<<<<<< HEAD
           <audio controls load  src="{{winnerSong.previewURI}}">{{winnerSong.previewURI}}</audio>
+=======
+          <audio controls src="{{winnerSong.previewURI}}">{{winnerSong.previewURI}}</audio>
+>>>>>>> e90019b5ee468837644e86e9cf6361c74e0a138f
         </div>
       </section>
     </nav>

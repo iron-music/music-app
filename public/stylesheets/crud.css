@@ -1,7 +1,7 @@
 /* CRUD post*/
 .container-single-post{
     width: 100%;
-    height: calc(100% - 124px);
+    min-height: calc(100% - 124px);
     display: flex;
     
     justify-content: center;
@@ -88,7 +88,7 @@
     align-items: center;
     padding-top: 10px;
     width: 100%;
-    height: calc(100% - 124px);
+    min-height: calc(100% - 124px);
     color:white;
     background-color: #161616;
     flex-direction: column;
